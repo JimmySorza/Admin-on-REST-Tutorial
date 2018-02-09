@@ -1,5 +1,5 @@
 import React from 'react';
-import {List, Edit, Create, Datagrid, ReferenceField, TextField, EditButton, DisableInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput,}  from 'admin-on-rest';
+import {DeleteButton, List, Edit, Create, Datagrid, ReferenceField, TextField, EditButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput}  from 'admin-on-rest';
 
     export const PostList = (props) => (
         <List {...props}>
@@ -11,6 +11,7 @@ import {List, Edit, Create, Datagrid, ReferenceField, TextField, EditButton, Dis
                 <TextField source="title" />
                 <TextField source="body" />
                 <EditButton/>
+                <DeleteButton/>
             </Datagrid>
 
         </List>
@@ -18,13 +19,13 @@ import {List, Edit, Create, Datagrid, ReferenceField, TextField, EditButton, Dis
     );
 
     const PostTitle = ({ record }) => {
-        return <span>Post {record ? '"${record.title}"' : ''}</span>;
+        return <span>Post {record ? `"${record.title}"` : ''}</span>;
     };
 
     export const PostEdit = (props) => (
             <Edit title={<PostTitle />}{...props}>
                 <SimpleForm>
-                    <DisableInput source="id" />
+                    <DisabledInput source="id" />
                     <ReferenceInput label="User" source="userId" reference="users">
                         <SelectInput optionText="name" />
                     </ReferenceInput>
