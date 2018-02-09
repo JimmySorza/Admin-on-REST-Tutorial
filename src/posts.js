@@ -1,5 +1,5 @@
 import React from 'react';
-import {Filter, DeleteButton, List, Edit, Create, Datagrid, ReferenceField, TextField, EditButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput}  from 'admin-on-rest';
+import { Responsive, SimpleList, Filter, DeleteButton, List, Edit, Create, Datagrid, ReferenceField, TextField, EditButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput}  from 'admin-on-rest';
 
 
     const PostFilter = (props) => (
@@ -13,16 +13,27 @@ import {Filter, DeleteButton, List, Edit, Create, Datagrid, ReferenceField, Text
 
     export const PostList = (props) => (
         <List {...props} filters={<PostFilter/>}>
-            <Datagrid>
-                <TextField source="id" />
-                <ReferenceField label="User" source="userId" reference="users">
-                    <TextField source="name"/>
-                </ReferenceField>
-                <TextField source="title" />
-                <TextField source="body" />
-                <EditButton/>
-                <DeleteButton/>
-            </Datagrid>
+           <Responsive
+             small={
+                <SimpleList
+                    primaryText={record => record.title}
+                    secondaryText={record => `${record.views} views`}
+                    tertiaryText={record => new Date(record.published_at).toLocaleDateString()}
+                />
+                }
+             medium={
+                <Datagrid>
+                    <TextField source="id" />
+                    <ReferenceField label="User" source="userId" reference="users">
+                        <TextField source="name"/>
+                    </ReferenceField>
+                    <TextField source="title" />
+                    <TextField source="body" />
+                    <EditButton/>
+                    <DeleteButton/>
+                </Datagrid>
+        }
+               />
         </List>
 
     );
