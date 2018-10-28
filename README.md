@@ -1,3 +1,1 @@
-# Admin-on-REST Tutorial: test-admin
-
-Aplicación de administrador basada en una API de REST existente.
+# This repo has moved to https://gitlab.com/jimmysorza/Admin-on-REST-Tutorial
